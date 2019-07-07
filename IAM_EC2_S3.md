@@ -1,6 +1,6 @@
 ## Part 1 : create a User and a Group using IAM
 
-Log into your `AWS` management console using `$ https://console.aws.amazon.com.`<br>
+- Log into your `AWS` management console using `$ https://console.aws.amazon.com.`<br>
 
 I'm using `MFA` to secure my root account access coupled with `Google Authenticator` on my `Android` smartphone.<br>
 
@@ -15,7 +15,7 @@ You can bypass this step and login normally.<br>
 </p>
 </details>
 
-<b>Go to Services > IAM > Users > Add user</b><br>
+- Go to Services > IAM > Users > Add user<br>
 
 <li>User name : user-1</li><br>
 
@@ -62,7 +62,7 @@ You can bypass this step and login normally.<br>
 
 <b>Download .csv</b> (you gonna use these credentials later on this tutorial)<br>
 
-Write down your Access key ID and Secret access key > close the window<br>
+- Write down your Access key ID and Secret access key > close the window<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -73,7 +73,7 @@ Write down your Access key ID and Secret access key > close the window<br>
 </p>
 </details>
 
-Now in Groups you should have one group named Developers which should list <b>user-1</b>.
+- Now in Groups you should have one group named Developers which should list <b>user-1</b>.
 
 <details>
 <summary>🔴 See output</summary>
@@ -90,7 +90,7 @@ Now in Groups you should have one group named Developers which should list <b>us
 
 Services > EC2<br>
 
-3. In "Create Instance" section, click on "Launch Instance"<br>
+- In "Create Instance" section, click on "Launch Instance"<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -101,13 +101,13 @@ Services > EC2<br>
 </p>
 </details>
 
-4. Select Amazon Linux 2 AMI (HVM), SSD Volume Type<br>
+- Select Amazon Linux 2 AMI (HVM), SSD Volume Type<br>
 
-5. Instance type: choose t2.micro (Free tier eligible). Instance comes with 1vCPU and 1 GiB (memory).<br>
+- Instance type: choose t2.micro (Free tier eligible). Instance comes with 1vCPU and 1 GiB (memory).<br>
 
 <b>Next: Configure instance details</b><br>
 
-6. Leave all fields as they're by default, just Enable termination protection.<br>
+- Leave all fields as they're by default, just Enable termination protection.<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -120,7 +120,7 @@ Services > EC2<br>
 
 <b>Next : Add Storage</b><br>
 
-Leave default configuration then click on Next: Add Tags. You can leave tags blanks, here I'm using some tags for my own needs.<br>
+- Leave default configuration then click on Next: Add Tags. You can leave tags blanks, here I'm using some tags for my own needs.<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -133,7 +133,7 @@ Leave default configuration then click on Next: Add Tags. You can leave tags bla
 
 <b>Next : Configure Security Group</b><br>
 
-7. Create a new security group > Security group name: dev-group > Description : Developers Security Group > Review and launch > Launch > Create New Key Pair > Key Pair Name : EC2KP > Download Key Pair.
+- Create a new security group > Security group name: dev-group > Description : Developers Security Group > Review and launch > Launch > Create New Key Pair > Key Pair Name : EC2KP > Download Key Pair.
 
 <details>
 <summary>🔴 See output</summary>
@@ -146,7 +146,7 @@ Leave default configuration then click on Next: Add Tags. You can leave tags bla
 
 <b>Launch Instances > View Instances</b><br>
 
-Rename your instance to "DEV".<br>
+- Rename your instance to "DEV".<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -157,7 +157,7 @@ Rename your instance to "DEV".<br>
 </p>
 </details>
 
-At this point of the tutorial, you should have one running EC2 instance, a User and a Group via your IAM.
+- At this point of the tutorial, you should have one running EC2 instance, a User and a Group via your IAM.
 
 <hr>
 
@@ -171,9 +171,9 @@ Ctrl + Alt + T to open a new CLI window<br>
 
 `$ cd Downloads` > `$ sudo mv /home/zaki/Downloads/EC2KP.pem /home/zaki/Desktop>SSH`<br>
 
-Go to your SSH directory and check that the file persists there : `$ cd Desktop/SSH` > ls<br>
+- Go to your SSH directory and check that the file persists there : `$ cd Desktop/SSH` > ls<br>
 
-Change the permissions to .pem file, ie: `$ chmod 400 EC2KP.pem`.<br>
+- Change the permissions to .pem file, ie: `$ chmod 400 EC2KP.pem`.<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -199,13 +199,13 @@ Type "yes" when prompted by the `CLI`<br>
 </p>
 </details>
 
-Go in root mode : `$ sudo su` and use `$ aws s3 ls`. The last command should return "Unable to locate credentials. You can configure credentials by running "aws configure".<br>
+- Go in root mode : `$ sudo su` and use `$ aws s3 ls`. The last command should return "Unable to locate credentials. You can configure credentials by running "aws configure".<br>
 
 To use your provided credentials use : `$ aws configure` <br>
 
 Remember that you wrote down your `Access Key ID` and `Secret access key` when creating your EC2 Instance. Use the provided credentials (go to your Downloads and check for the credentials.csv file).<br>
 
-Provide Access Key ID > AWS Secret Access Key > Default region name (use the Availability Zone of your EC2 instance, ie : us-east-1) > default output format : you can use "text" or "json". In this tutorial i'm using "json".<br>
+- Provide Access Key ID > AWS Secret Access Key > Default region name (use the Availability Zone of your EC2 instance, ie : us-east-1) > default output format : you can use "text" or "json". In this tutorial i'm using "json".<br>
 
 `$ aws s3 ls` displays my available buckets. If your buckets do not show up, go to Users > Security credentials > Create a new access key or create a new EC2 instance and restart the procedure in your CLI.<br>
 
