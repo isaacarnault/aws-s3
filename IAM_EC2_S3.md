@@ -7,7 +7,7 @@ I'm using `MFA` to secure my root account access coupled with `Google Authentica
 You can bypass this step and login normally.<br>
 
 <details>
-<summary>🃏 Help me</summary>
+<summary>🔴 See output</summary>
 <p>  
 
 [![isaac-arnault-AWS-1.jpg](https://i.postimg.cc/L5F2KQwp/isaac-arnault-AWS-1.jpg)](https://postimg.cc/nj26q2nR)
@@ -30,7 +30,7 @@ You can bypass this step and login normally.<br>
 </p>
 </details>
 
-> Next : Permissions > Create group<br>
+<b>> Next : Permissions > Create group</b><br>
 
 <li>Group name : Developers</li> > Administrator Access > Create group<br>
 
@@ -43,7 +43,7 @@ You can bypass this step and login normally.<br>
 </p>
 </details>
 
-> Next : Tags<br>
+<b>> Next : Tags</b><br>
 <li>Key: dev-1 | Value: name of the developer</li>  > Create user
 
 <details>
