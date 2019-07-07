@@ -1,6 +1,6 @@
 ## Part 1 : create a User and a Group using IAM
 
-1. `$ https://console.aws.amazon.com.` // log into your `AWS` management console<br>
+Log into your `AWS` management console using `$ https://console.aws.amazon.com.`<br>
 
 I'm using `MFA` to secure my root account access coupled with `Google Authenticator` on my `Android` smartphone.<br>
 
@@ -15,7 +15,7 @@ You can bypass this step and login normally.<br>
 </p>
 </details>
 
-2. Go to Services > IAM > Users > Add user<br>
+<b>Go to Services > IAM > Users > Add user</b><br>
 
 <li>User name : user-1</li><br>
 
@@ -32,7 +32,9 @@ You can bypass this step and login normally.<br>
 
 <b> Next : Permissions > Create group</b><br>
 
-<li>Group name : Developers</li> > Administrator Access > Create group<br>
+<li>Group name : Developers</li><br>
+
+<b>Administrator Access > Create group</b><br>
 
 <details>
 <summary>🔴 See output</summary>
