@@ -250,25 +250,15 @@ Remember that you wrote down your `Access Key ID` and `Secret access key` when c
 
 ## AWS CLI : other useful commands
 
-`$ aws s3 rm s3://bucketname/foldername/filename`<br>
+`$ aws s3 rm s3://bucketname/foldername/filename` - To delete a specific file in a bucket.<br>
 
-To delete a specific file in a bucket.<br>
+`$ aws s3 rm s3://bucketname/ --recursive --exclude "*.jpg"` - Recursively deletes all objects under a specified bucket and prefix when passed with the parameter `--recursive` while excluding some objects by using an `--exclude` parameter.<br>
 
-`$ aws s3 rm s3://bucketname/ --recursive --exclude "*.jpg"`<br>
+`$ aws s3 rb s3://bucketname` - To delete a bucket.<br>
 
-Recursively deletes all objects under a specified bucket and prefix when passed with the parameter `--recursive` while excluding some objects by using an `--exclude` parameter.<br>
+`$ aws s3 rb s3://bucketname --force` - To force bucket deletion.<br>
 
-`$ aws s3 rb s3://bucketname`<br>
-
-To delete a bucket.<br>
-
-`$ aws s3 rb s3://bucketname --force`<br>
-
-To force bucket deletion.<br>
-
-`$ aws s3 ls s3://bucketname/foldername/`<br>
-
-To check what's in a bucket.
+`$ aws s3 ls s3://bucketname/foldername/` - To check what's in a bucket.
 
 <hr>
 
