@@ -30,7 +30,7 @@ You can bypass this step and login normally.<br>
 </p>
 </details>
 
-<b>> Next : Permissions > Create group</b><br>
+<b> Next : Permissions > Create group</b><br>
 
 <li>Group name : Developers</li> > Administrator Access > Create group<br>
 
@@ -43,8 +43,11 @@ You can bypass this step and login normally.<br>
 </p>
 </details>
 
-<b>> Next : Tags</b><br>
-<li>Key: dev-1 | Value: name of the developer</li>  > Create user
+<b>Next : Tags</b><br>
+
+<li>Key: dev-1 | Value: name of the developer</li><br>
+
+<b>Create user</b><br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -55,9 +58,9 @@ You can bypass this step and login normally.<br>
 </p>
 </details>
 
-> Download .csv (you gonna use these credentials later on)<br>
+<b>Download .csv</b> (you gonna use these credentials later on this tutorial)<br>
 
-> Write down your Access key ID and Secret access key > close the window<br>
+Write down your Access key ID and Secret access key > close the window<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -100,9 +103,9 @@ Services > EC2<br>
 
 5. Instance type: choose t2.micro (Free tier eligible). Instance comes with 1vCPU and 1 GiB (memory).<br>
 
-6. Click on "Next: Configure instance details"<br>
+<b>Next: Configure instance details</b><br>
 
-7. Configure instance details : leave all fields as they're by default, just Enable termination protection.<br>
+6. Leave all fields as they're by default, just Enable termination protection.<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -113,8 +116,9 @@ Services > EC2<br>
 </p>
 </details>
 
+<b>Next : Add Storage</b><br>
 
-8. Click on "Next : Add Storage". Leave default configuration then click on Next: Add Tags. You can leave tags blanks, here I'm using some tags for my own needs.<br>
+Leave default configuration then click on Next: Add Tags. You can leave tags blanks, here I'm using some tags for my own needs.<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -125,7 +129,9 @@ Services > EC2<br>
 </p>
 </details>
 
-9. Click on "Next : Configure Security Group" > Create a new security group > Security group name: dev-group > Description : Developers Security Group > Review and launch > Launch > Create New Key Pair > Key Pair Name : EC2KP > Download Key Pair.
+<b>Next : Configure Security Group</b><br>
+
+7. Create a new security group > Security group name: dev-group > Description : Developers Security Group > Review and launch > Launch > Create New Key Pair > Key Pair Name : EC2KP > Download Key Pair.
 
 <details>
 <summary>🔴 See output</summary>
@@ -136,7 +142,9 @@ Services > EC2<br>
 </p>
 </details>
 
-> Launch Instances > View Instances > Rename your instance to "DEV"<br>
+<b>Launch Instances > View Instances</b><br>
+
+Rename your instance to "DEV".<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -174,9 +182,11 @@ Change the permissions to .pem file, ie: `$ chmod 400 EC2KP.pem`.<br>
 </p>
 </details>
 
-Connect to your EC2 instance using your `CLI`<br>
+<b>Connect to your EC2 instance using your `CLI`</b><br>
 
-Next use : `$ ssh ec2-user@your-ipv4-public-address -i EC2KP.pem` - Type "yes" when prompted by the `CLI`<br>
+Use : `$ ssh ec2-user@your-ipv4-public-address -i EC2KP.pem`.<br>
+
+Type "yes" when prompted by the `CLI`<br>
 
 <details>
 <summary>🔴 See output</summary>
@@ -187,11 +197,11 @@ Next use : `$ ssh ec2-user@your-ipv4-public-address -i EC2KP.pem` - Type "yes" w
 </p>
 </details>
 
-Go in root mode : $ sudo su and use $ aws s3 ls. The last command will return "Unable to locate credentials. You can configure credentials by running "aws configure".<br>
+Go in root mode : `$ sudo su` and use `$ aws s3 ls`. The last command should return "Unable to locate credentials. You can configure credentials by running "aws configure".<br>
 
-To use your provided credentials use : $ aws configure <br>
+To use your provided credentials use : `$ aws configure` <br>
 
-Remember that you wrote down your Access Key ID and Secret access key when creating your EC2 Instance. Use the provided credentials (go to your Downloads and check for the credentials.csv file).<br>
+Remember that you wrote down your `Access Key ID` and `Secret access key` when creating your EC2 Instance. Use the provided credentials (go to your Downloads and check for the credentials.csv file).<br>
 
 Provide Access Key ID > AWS Secret Access Key > Default region name (use the Availability Zone of your EC2 instance, ie : us-east-1) > default output format : you can use "text" or "json". In this tutorial i'm using "json".<br>
 
@@ -221,7 +231,7 @@ Provide Access Key ID > AWS Secret Access Key > Default region name (use the Ava
 </p>
 </details>
 
-`$ aws s3api put-object` --bucket bucketname --key foldername/ - To create a new folder in a specific bucket.<br>
+`$ aws s3api put-object --bucket bucketname --key foldername/` - To create a new folder in a specific bucket.<br>
 
 `$ aws s3 ls myfifthbucket` - To check what's in your bucket.<br>
 
@@ -238,12 +248,26 @@ Provide Access Key ID > AWS Secret Access Key > Default region name (use the Ava
 
 ## AWS CLI : other useful commands
 
-`$ aws s3 rm s3://bucketname/foldername/filename` - To delete a specific file in a bucket.<br>
+`$ aws s3 rm s3://bucketname/foldername/filename`<br>
 
-`$ aws s3 rm s3://bucketname/ --recursive --exclude "*.jpg"` - Recursively deletes all objects under a specified bucket and prefix when passed with the parameter --recursive while excluding some objects by using an --exclude parameter.<br>
+To delete a specific file in a bucket.<br>
 
-`$ aws s3 rb s3://bucketname` - To delete a bucket.<br>
+`$ aws s3 rm s3://bucketname/ --recursive --exclude "*.jpg"`<br>
 
-`$ aws s3 rb s3://bucketname --force` - To force bucket deletion.<br>
+Recursively deletes all objects under a specified bucket and prefix when passed with the parameter `--recursive` while excluding some objects by using an `--exclude` parameter.<br>
 
-`$ aws s3 ls s3://bucketname/foldername/` - To check wha'ts in a bucket.
+`$ aws s3 rb s3://bucketname`<br>
+
+To delete a bucket.<br>
+
+`$ aws s3 rb s3://bucketname --force`<br>
+
+To force bucket deletion.<br>
+
+`$ aws s3 ls s3://bucketname/foldername/`<br>
+
+To check what's in a bucket.
+
+<hr>
+
+I hoped you enjoyed this gist. Feel free to fork it and to spread a word about it. Thanks.
