@@ -7,7 +7,7 @@ I'm using `MFA` to secure my root account access coupled with `Google Authentica
 You can bypass this step and login normally.<br>
 
 <details>
-<summary>🔴 See output</summary>
+<summary>🃏 Help me</summary>
 <p>  
 
 [![isaac-arnault-AWS-1.jpg](https://i.postimg.cc/L5F2KQwp/isaac-arnault-AWS-1.jpg)](https://postimg.cc/nj26q2nR)
